@@ -696,3 +696,13 @@ test('\nmax satisfying', function(t) {
   });
   t.end();
 });
+
+test('long build id', function (t) {
+  var longBuild = '-928490632884417731e7af463c92b034d6a78268fc993bcb88a57944'
+  var shortVersion = '1.1.1'
+  var longVersion = Number.MAX_SAFE_INTEGER + '.' + Number.MAX_SAFE_INTEGER + '.' + Number.MAX_SAFE_INTEGER
+  t.equal(semver.valid(shortVersion + longBuild), shortVersion + longBuild)
+  t.equal(semver.valid(longVersion + longBuild), longVersion + longBuild)
+  t.end()
+})
+
